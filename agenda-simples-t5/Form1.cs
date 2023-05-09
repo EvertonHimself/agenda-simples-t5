@@ -16,5 +16,11 @@ namespace agenda_simples_t5
         {
             InitializeComponent();
         }
+
+        private void btnAddContato_Click(object sender, EventArgs e)
+        {
+            Contato objetoContato = new Contato();
+            lstContatos.Items.Add(objetoContato.ToString());
+        }
     }
 }
