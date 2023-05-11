@@ -14,6 +14,7 @@ namespace agenda_simples_t5
         private string primeiroNome;
         private string sobrenome;
         private string telefone;
+        private string email;
 
         // PROPRIEDADES da classe Contato.
         // Acessíveis por qualquer parte desse programa.
@@ -42,6 +43,12 @@ namespace agenda_simples_t5
                 }
             }
         }
+
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
         
         // Construtor da classe.
         public Contato()
@@ -49,13 +56,15 @@ namespace agenda_simples_t5
             PrimeiroNome = "João";
             Sobrenome = "Da Silva";
             Telefone = "11988888776";
+            Email = "exemplo@exemplo.com";
         }
         // Sobrecarga de método.
-        public Contato(string primeiroNome, string sobrenome, string telefone)
+        public Contato(string primeiroNome, string sobrenome, string telefone, string email)
         {
             PrimeiroNome = primeiroNome;
             Sobrenome = sobrenome;
-            Telefone = telefone;    
+            Telefone = telefone;
+            Email = email;
         }
 
         // Sobreescrita do método ToString().
@@ -70,6 +79,8 @@ namespace agenda_simples_t5
                 Telefone.Substring(2,5),
                 Telefone.Substring(7,4)
                 );
+            saida += " "; // Apenas um espaço entre o telefone e e-mail.
+            saida += String.Format("{0}", Email);
 
             return saida;
         }
