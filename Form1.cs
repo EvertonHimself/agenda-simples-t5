@@ -24,16 +24,8 @@ namespace agenda_simples_t5
         private void btnAddContato_Click(object sender, EventArgs e)
         {
             // Cria um objeto objetoContato,com os dados do formulário.
-            Contato objetoContato = new Contato(txtNome.Text, 
-                txtSobrenome.Text, txtTelefone.Text, txtEmail.Text);
-            // Salva os dados de objetoContato em arquivo de texto.
-            Escrever(objetoContato);
-            // Lê os dados que estão salvos no arquivo.
-            Ler();
-            // Atualiza os dados que são exibidos na lista de contatos.
-            AtualizarDisplay();
-            // Limpa os textos digitados nos campos dos dados de contato.
-            LimparFormulario();
+            Contato objetoContato = new Contato(txtNome.Text, txtSobrenome.Text, txtTelefone.Text, txtEmail.Text);
+            lstContatos.Items.Add(objetoContato);
         }
 
         // Escreve o contato no arquivo de texto.
@@ -74,34 +66,6 @@ namespace agenda_simples_t5
             }
 
             leitorDeArquivos.Close();
-        }
-
-        // Atualiza o "display" com os dados do arquivo de texto.
-        private void AtualizarDisplay()
-        {
-            // Apagar a lista 'anterior' e gerar, ou criar uma, com
-            // o conteúdo da lista anterior + o conteúdo novo.
-            lstContatos.Items.Clear();
-            for (int i = 0; i < listaDeContatos.Length; i++)
-            {
-                // Insere no display, os membros de LISTADECONTATOS
-                // um a um.
-                lstContatos.Items.Add(listaDeContatos[i].ToString());
-            }
-        }
-
-        private void LimparFormulario()
-        {
-            txtNome.Text = String.Empty;
-            txtSobrenome.Text = String.Empty;
-            txtTelefone.Text = String.Empty;
-            txtEmail.Text = String.Empty;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            Ler();
-            AtualizarDisplay();
         }
     }
 }
